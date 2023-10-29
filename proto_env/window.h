@@ -2,6 +2,13 @@
 #define WINDOW_H
 
 #include <QWidget>
+#include <QCamera>
+#include <QImageCapture>
+#include <QMediaDevices>
+#include <QMediaCaptureSession>
+#include <QVideoWidget>
+#include <QVBoxLayout>
+
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class Window; }
@@ -17,5 +24,10 @@ public:
 
 private:
     Ui::Window *ui;
+    QCamera *m_camera;
+    QImageCapture *m_imageCapture;
+    QMediaCaptureSession *m_mediaCaptrueSession;
+    QVideoWidget *m_videoWidget;
+    QVBoxLayout *m_vBoxLyout;
 };
 #endif // WINDOW_H
