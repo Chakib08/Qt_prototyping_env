@@ -23,4 +23,12 @@ qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
-QMAKE_CXXFLAGS += -std=gnu++14
+
+
+LIBS += C:\OpenCV-MinGW-Build\x64\mingw\bin\libopencv_highgui455.dll
+LIBS += C:\OpenCV-MinGW-Build\x64\mingw\bin\libopencv_imgproc455.dll
+LIBS += C:\OpenCV-MinGW-Build\x64\mingw\bin\libopencv_core455.dll
+LIBS += C:\OpenCV-MinGW-Build\x64\mingw\bin\libopencv_imgcodecs455.dll
+
+INCLUDEPATH += C:/OpenCV-MinGW-Build/include
+DEPENDPATH += C:/OpenCV-MinGW-Build/include

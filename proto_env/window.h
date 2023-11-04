@@ -8,6 +8,9 @@
 #include <QMediaCaptureSession>
 #include <QVideoWidget>
 #include <QVBoxLayout>
+#include <QPushButton>
+#include <QMessageBox>
+
 
 
 QT_BEGIN_NAMESPACE
@@ -22,6 +25,9 @@ public:
     Window(QWidget *parent = nullptr);
     ~Window();
 
+public slots:
+    void slotButtonClicked();
+
 private:
     Ui::Window *ui;
     QCamera *m_camera;
@@ -29,5 +35,6 @@ private:
     QMediaCaptureSession *m_mediaCaptrueSession;
     QVideoWidget *m_videoWidget;
     QVBoxLayout *m_vBoxLyout;
+    QPushButton *m_displayButton;
 };
 #endif // WINDOW_H
