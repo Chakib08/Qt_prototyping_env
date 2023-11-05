@@ -15,10 +15,9 @@ int main(int argc, char *argv[])
     // read an image
     cv::Mat image = cv::imread("D:/Qt_dev/Qt_prototyping_env/proto_env/sett_soul_fighter.jpeg", 1);
     // create image window named "My Image"
-    cv::namedWindow("My Image");
+    //cv::namedWindow("My Image");
     // show the image on window
-    cv::imshow("My Image", image);
-
+    //cv::imshow("My Image", image);
 
 
     return a.exec();

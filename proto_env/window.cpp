@@ -10,19 +10,25 @@ Window::Window(QWidget *parent)
     m_camera = new QCamera((QMediaDevices::defaultVideoInput()));
     m_mediaCaptrueSession = new QMediaCaptureSession(this);
 
-
+    m_imageCapture = new QImageCapture();
+    m_image = new QImage();
 
 
     QWidget *w = new QWidget();
     m_vBoxLyout = new QVBoxLayout(w);
     m_displayButton = new QPushButton("Display");
+    m_saveImageButton = new QPushButton("Save Image");
 
     w->resize(1080, 720);
     m_vBoxLyout->addWidget(m_displayButton);
+    m_vBoxLyout->addWidget(m_saveImageButton);
     m_vBoxLyout->addWidget(m_videoWidget);
 
     // Connect the clicked signal of the button to the slotButtonClicked slot
     connect(m_displayButton, SIGNAL(clicked()), this, SLOT(slotButtonClicked()));
+
+    // Save image
+    connect(m_saveImageButton, SIGNAL(clicked()), this, SLOT(saveImage()));
 
     w->show();
 
@@ -44,5 +50,12 @@ void Window::slotButtonClicked()
     m_camera->start();
     m_mediaCaptrueSession->setCamera(m_camera);
     m_mediaCaptrueSession->setVideoOutput(m_videoWidget);
+}
+
+void Window::saveImage()
+{
+    m_mediaCaptrueSession->setImageCapture(m_imageCapture);
+
+    m_imageCapture->captureToFile("D:/Qt_dev/Qt_prototyping_env/proto_env/img");
 }
 

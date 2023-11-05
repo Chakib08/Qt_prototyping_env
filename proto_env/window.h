@@ -10,6 +10,9 @@
 #include <QVBoxLayout>
 #include <QPushButton>
 #include <QMessageBox>
+#include <QString>
+#include <QFileDialog>
+
 
 
 
@@ -27,6 +30,7 @@ public:
 
 public slots:
     void slotButtonClicked();
+    void saveImage();
 
 private:
     Ui::Window *ui;
@@ -36,5 +40,7 @@ private:
     QVideoWidget *m_videoWidget;
     QVBoxLayout *m_vBoxLyout;
     QPushButton *m_displayButton;
+    QPushButton *m_saveImageButton;
+    QImage *m_image;
 };
 #endif // WINDOW_H
