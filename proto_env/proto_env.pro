@@ -29,6 +29,10 @@ LIBS += C:\OpenCV-MinGW-Build\x64\mingw\bin\libopencv_highgui455.dll
 LIBS += C:\OpenCV-MinGW-Build\x64\mingw\bin\libopencv_imgproc455.dll
 LIBS += C:\OpenCV-MinGW-Build\x64\mingw\bin\libopencv_core455.dll
 LIBS += C:\OpenCV-MinGW-Build\x64\mingw\bin\libopencv_imgcodecs455.dll
+LIBS += C:\OpenCV-MinGW-Build\x64\mingw\bin\libopencv_video455.dll
+LIBS += C:\OpenCV-MinGW-Build\x64\mingw\bin\libopencv_videoio455.dll
+
+
 
 INCLUDEPATH += C:/OpenCV-MinGW-Build/include
 DEPENDPATH += C:/OpenCV-MinGW-Build/include
