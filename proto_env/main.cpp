@@ -52,27 +52,27 @@ int main(int argc, char *argv[])
         {
             qErrnoWarning("No frame");
             break;
+        label.setPixmap(pixmap);
         }
 
         QImage qt_img(cv_img.data, cv_img.cols, cv_img.rows, cv_img.step, QImage::Format_BGR888);
         pixmap = QPixmap::fromImage(qt_img);
-        label.setPixmap(pixmap);
 
         // Display the image
         //cv::imshow("Video Player", cv_img);
 
-        // char c = (char) cv::waitKey(25);//Allowing 25 milliseconds frame processing time and initiating break condition//
-        // if (c == 27){ //If 'Esc' is entered break the loop//
-        //     break;
-        // }
-
-        label.show();
+        //label.show();
 
         // Allow the event loop to process events
         qApp->processEvents();
 
         // Delay to control the frame rate
         QThread::msleep(25);
+
+        char c = (char) cv::waitKey(25);//Allowing 25 milliseconds frame processing time and initiating break condition//
+        if (c == 27){ //If 'Esc' is entered break the loop//
+            break;
+        }
     }
 
     cap.release();
