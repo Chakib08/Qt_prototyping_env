@@ -6,8 +6,6 @@
 class IDeviceGui : public QWidget
 {
     Q_OBJECT
-public:
-    explicit IDeviceGui(QWidget *parent = nullptr);
 
 signals:
 

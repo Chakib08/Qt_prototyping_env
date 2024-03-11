@@ -55,7 +55,6 @@ void Window::slotButtonClicked()
 void Window::saveImage()
 {
     m_mediaCaptrueSession->setImageCapture(m_imageCapture);
-
     m_imageCapture->captureToFile("D:/Qt_dev/Qt_prototyping_env/proto_env/img");
 }
 
