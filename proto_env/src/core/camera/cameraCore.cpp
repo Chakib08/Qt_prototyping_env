@@ -1,56 +1,31 @@
-#include "cameraCore.h"
+// cameraCore.cpp
+#include "src/core/camera/cameraCore.h"
 
-void cameraCore::initialize()
-{
-
+CameraCore::CameraCore(QObject *parent) : QObject(parent), m_camera(nullptr),
+    m_mediaCaptureSession(nullptr), m_imageCapture(nullptr) {
+    // Initialize camera and related objects
+    m_camera = new QCamera(QMediaDevices::defaultVideoInput());
+    m_mediaCaptureSession = new QMediaCaptureSession(this);
+    m_imageCapture = new QImageCapture(this);
+    m_mediaCaptureSession->setCamera(m_camera);
+    m_mediaCaptureSession->setImageCapture(m_imageCapture);
 }
 
-void cameraCore::start()
-{
-    m_camera->start();
-    m_mediaCaptureSession->setCamera(m_camera.data());
-    m_mediaCaptureSession->setVideoOutput(m_videoOutput);
+CameraCore::~CameraCore() {
+    delete m_camera;
+    delete m_mediaCaptureSession;
+    delete m_imageCapture;
 }
 
-void cameraCore::stop()
-{
-    m_camera->stop();
+void CameraCore::startCamera() {
+    if (m_camera) {
+        m_camera->start();
+        m_mediaCaptureSession->setVideoOutput(new QVideoWidget());
+    }
 }
 
-const QObject *cameraCore::getVideoOutput()
-{
-    if(!m_videoOutput)
-        return nullptr;
-    return m_videoOutput;
-}
-
-void cameraCore::onCaptureButtonClicked()
-{
-    start();
-}
-
-void cameraCore::onSaveImageButtonClicked()
-{
-    m_mediaCaptureSession->setImageCapture(m_imageCapture.data());
-    m_imageCapture->captureToFile("D:/Qt_dev/Qt_prototyping_env/proto_env/img");
-}
-
-cameraCore::cameraCore(QPushButton* display, QPushButton* save)
-{
-    m_camera = QSharedPointer<QCamera>(new QCamera(QMediaDevices::defaultVideoInput()));
-    m_mediaCaptureSession = QSharedPointer<QMediaCaptureSession>(new QMediaCaptureSession(this));
-    m_imageCapture = QSharedPointer<QImageCapture>(new QImageCapture());
-    m_videoOutput = new QObject(this);
-
-    // Connect the clicked signal of the button to the slotButtonClicked slot
-    connect(display, SIGNAL(clicked()), this, SLOT(onCaptureButtonClicked()));
-
-    // Save image
-    connect(save, SIGNAL(clicked()), this, SLOT(onSaveImageButtonClicked()));
-}
-
-cameraCore::~cameraCore()
-{
-    delete m_videoOutput;
-    stop();
+void CameraCore::saveImage(const QString &filePath) {
+    if (m_imageCapture) {
+        m_imageCapture->captureToFile(filePath);
+    }
 }

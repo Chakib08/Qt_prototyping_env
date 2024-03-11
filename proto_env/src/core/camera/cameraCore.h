@@ -1,37 +1,27 @@
+// cameraCore.h
 #ifndef CAMERACORE_H
 #define CAMERACORE_H
 
+#include <QObject>
 #include <QCamera>
+#include <QMediaCaptureSession>
 #include <QImageCapture>
 #include <QMediaDevices>
-#include <QMediaCaptureSession>
-#include <QSharedPointer>
 #include <QVideoWidget>
-#include <QPushButton>
 
-#include "src/core/iDeviceCore.h"
-
-class cameraCore : public IDeviceCore
-{
-
+class CameraCore : public QObject {
+    Q_OBJECT
 public:
-    cameraCore();
-    cameraCore(QPushButton* display, QPushButton* save);
-    ~cameraCore();
-    void initialize() override;
-    void start() override;
-    void stop() override;
-    const QObject* getVideoOutput();
+    explicit CameraCore(QObject *parent = nullptr);
+    ~CameraCore();
+
+    void startCamera();
+    void saveImage(const QString &filePath);
 
 private:
-    QSharedPointer<QCamera> m_camera;
-    QSharedPointer<QMediaCaptureSession> m_mediaCaptureSession;
-    QSharedPointer<QImageCapture> m_imageCapture;
-    QObject* m_videoOutput;
-
-public slots:
-    void onCaptureButtonClicked();
-    void onSaveImageButtonClicked();
+    QCamera *m_camera;
+    QMediaCaptureSession *m_mediaCaptureSession;
+    QImageCapture *m_imageCapture;
 };
 
 #endif // CAMERACORE_H

@@ -1,23 +1,28 @@
+// cameraGui.h
 #ifndef CAMERAGUI_H
 #define CAMERAGUI_H
 
 #include <QWidget>
-#include <QVideoWidget>
+#include <QPushButton>
 #include <QVBoxLayout>
-#include <QSharedPointer>
+#include <QVideoWidget>
+#include "src/core/camera/cameraCore.h"
 
-#include "src/gui/IDeviceGui.h"
-
-
-class cameraGui : public IDeviceGui
-{
+class CameraGui : public QWidget {
+    Q_OBJECT
 public:
-    cameraGui();
-    QSharedPointer<QVideoWidget> getVideoWidget();
+    explicit CameraGui(QWidget *parent = nullptr);
+
+private slots:
+    void startCamera();
+    void saveImage();
 
 private:
-    QSharedPointer<QVideoWidget> m_videoWidget;
-
+    QVBoxLayout *m_vBoxLayout;
+    QPushButton *m_displayButton;
+    QPushButton *m_saveImageButton;
+    QVideoWidget *m_videoWidget;
+    CameraCore *m_cameraCore;
 };
 
 #endif // CAMERAGUI_H
