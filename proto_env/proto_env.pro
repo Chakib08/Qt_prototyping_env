@@ -8,18 +8,21 @@ CONFIG += c++17
 # In order to do so, uncomment the following line.
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
+INCLUDEPATH += $$PWD/src
+
 SOURCES += \
-    src/core/camera/cameraCore.cpp \
-    src/gui/camera/cameraGui.cpp \
     src/main.cpp \
-    src/window.cpp
+    src/window.cpp \
+    src/Camera/Core/cameraCore.cpp \
+    src/Camera/Gui/cameraGui.cpp
 
 HEADERS += \
-    src/core/camera/cameraCore.h \
-    src/core/iDeviceCore.h \
-    src/gui/IDeviceGui.h \
-    src/gui/camera/cameraGui.h \
-    src/window.h
+    src/window.h \
+    src/Common/Interfaces/Devices/Core/iDeviceCore.h \
+    src/Common/Interfaces/Devices/Gui/iDeviceGui.h \
+    src/Camera/Core/cameraCore.h \
+    src/Camera/Gui/cameraGui.h
+
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
