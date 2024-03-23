@@ -9,7 +9,7 @@
 #include <QVideoWidget>
 #include <QPushButton>
 
-#include "src/core/iDeviceCore.h"
+#include "Common/Interfaces/Devices/Core/iDeviceCore.h"
 
 class cameraCore : public IDeviceCore
 {

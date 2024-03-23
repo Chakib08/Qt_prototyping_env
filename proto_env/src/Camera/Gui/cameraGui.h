@@ -6,7 +6,7 @@
 #include <QVBoxLayout>
 #include <QSharedPointer>
 
-#include "src/gui/IDeviceGui.h"
+#include "Common/Interfaces/Devices/Gui/iDeviceGui.h"
 
 
 class cameraGui : public IDeviceGui
