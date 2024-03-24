@@ -1,5 +1,5 @@
-#ifndef CAMERACORE_H
-#define CAMERACORE_H
+#ifndef CameraCore_H
+#define CameraCore_H
 
 #include <QCamera>
 #include <QImageCapture>
@@ -11,13 +11,13 @@
 
 #include "Common/Interfaces/Devices/Core/iDeviceCore.h"
 
-class cameraCore : public IDeviceCore
+class CameraCore : public IDeviceCore
 {
 
 public:
-    cameraCore();
-    cameraCore(QPushButton* display, QPushButton* save);
-    ~cameraCore();
+    CameraCore();
+    CameraCore(QPushButton* display, QPushButton* save);
+    ~CameraCore();
     void initialize() override;
     void start() override;
     void stop() override;
@@ -31,7 +31,7 @@ private:
 
 public slots:
     void onCaptureButtonClicked();
-    void onSaveImageButtonClicked();
+    void onSaveImageButtonClicked(const QString &path);
 };
 
-#endif // CAMERACORE_H
+#endif // CameraCore_H

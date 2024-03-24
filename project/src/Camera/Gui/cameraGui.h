@@ -9,10 +9,10 @@
 #include "Common/Interfaces/Devices/Gui/iDeviceGui.h"
 
 
-class cameraGui : public IDeviceGui
+class CameraGui : public IDeviceGui
 {
 public:
-    cameraGui();
+    CameraGui();
     QSharedPointer<QVideoWidget> getVideoWidget();
 
 private:

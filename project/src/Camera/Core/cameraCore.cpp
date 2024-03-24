@@ -1,41 +1,41 @@
-#include "cameraCore.h"
+#include "Camera/Core/cameraCore.h"
 
-void cameraCore::initialize()
+void CameraCore::initialize()
 {
 
 }
 
-void cameraCore::start()
+void CameraCore::start()
 {
     m_camera->start();
     m_mediaCaptureSession->setCamera(m_camera.data());
     m_mediaCaptureSession->setVideoOutput(m_videoOutput);
 }
 
-void cameraCore::stop()
+void CameraCore::stop()
 {
     m_camera->stop();
 }
 
-const QObject *cameraCore::getVideoOutput()
+const QObject *CameraCore::getVideoOutput()
 {
     if(!m_videoOutput)
         return nullptr;
     return m_videoOutput;
 }
 
-void cameraCore::onCaptureButtonClicked()
+void CameraCore::onCaptureButtonClicked()
 {
     start();
 }
 
-void cameraCore::onSaveImageButtonClicked()
+void CameraCore::onSaveImageButtonClicked(const QString &path)
 {
     m_mediaCaptureSession->setImageCapture(m_imageCapture.data());
-    m_imageCapture->captureToFile("D:/Qt_dev/Qt_prototyping_env/proto_env/img");
+    m_imageCapture->captureToFile(path);
 }
 
-cameraCore::cameraCore(QPushButton* display, QPushButton* save)
+CameraCore::cameraCore(QPushButton* display, QPushButton* save)
 {
     m_camera = QSharedPointer<QCamera>(new QCamera(QMediaDevices::defaultVideoInput()));
     m_mediaCaptureSession = QSharedPointer<QMediaCaptureSession>(new QMediaCaptureSession(this));
@@ -49,8 +49,8 @@ cameraCore::cameraCore(QPushButton* display, QPushButton* save)
     connect(save, SIGNAL(clicked()), this, SLOT(onSaveImageButtonClicked()));
 }
 
-cameraCore::~cameraCore()
+CameraCore::~cameraCore()
 {
+    CameraCore::stop();
     delete m_videoOutput;
-    stop();
 }
