@@ -13,13 +13,16 @@ INCLUDEPATH += $$PWD/src
 SOURCES += \
     src/main.cpp \
     src/window.cpp \
+    src/Camera/Controller/cameraController.cpp \
     src/Camera/Core/cameraCore.cpp \
     src/Camera/Gui/cameraGui.cpp
 
 HEADERS += \
     src/window.h \
+    src/Common/Interfaces/Devices/Controller/iDeviceController.h \
     src/Common/Interfaces/Devices/Core/iDeviceCore.h \
     src/Common/Interfaces/Devices/Gui/iDeviceGui.h \
+    src/Camera/Controller/cameraController.h \
     src/Camera/Core/cameraCore.h \
     src/Camera/Gui/cameraGui.h
 
