@@ -11,9 +11,11 @@ class CameraController : public IDeviceController
 public:
     CameraController();
     ~CameraController();
+    bool initGui();
+    bool run();
 private:
-    CameraCore* m_cameraCore;
-    CameraGui* m_cameraGui;
+    CameraCore *m_cameraCore;
+    CameraGui *m_cameraGui;
 
 };
 

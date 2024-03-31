@@ -1,5 +1,16 @@
 #include "Camera/Core/cameraCore.h"
 
+CameraCore::CameraCore()
+{
+
+}
+
+CameraCore::~CameraCore()
+{
+    CameraCore::stop();
+    delete m_videoOutput;
+}
+
 void CameraCore::initialize()
 {
 
@@ -47,10 +58,4 @@ CameraCore::CameraCore(QPushButton* display, QPushButton* save)
 
     // Save image
     connect(save, SIGNAL(clicked()), this, SLOT(onSaveImageButtonClicked()));
-}
-
-CameraCore::~CameraCore()
-{
-    CameraCore::stop();
-    delete m_videoOutput;
 }

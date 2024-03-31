@@ -4,6 +4,7 @@
 #include <QWidget>
 #include <QVideoWidget>
 #include <QVBoxLayout>
+#include <QPushButton>
 #include <QSharedPointer>
 
 #include "Common/Interfaces/Devices/Gui/iDeviceGui.h"
@@ -13,11 +14,13 @@ class CameraGui : public IDeviceGui
 {
 public:
     CameraGui();
-    QSharedPointer<QVideoWidget> getVideoWidget();
+    ~CameraGui();
+    bool initGui();
 
 private:
-    QSharedPointer<QVideoWidget> m_videoWidget;
-
+    QVideoWidget *m_videoWidget;
+    QPushButton *m_displayButton;
+    QPushButton *m_saveImageButton;
 };
 
 #endif // CAMERAGUI_H

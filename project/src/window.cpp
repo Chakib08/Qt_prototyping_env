@@ -14,6 +14,7 @@ Window::Window(QWidget *parent)
     m_image = new QImage();
 
 
+    /* GUI */
     QWidget *w = new QWidget();
     m_vBoxLyout = new QVBoxLayout(w);
     m_displayButton = new QPushButton("Display");
@@ -23,6 +24,7 @@ Window::Window(QWidget *parent)
     m_vBoxLyout->addWidget(m_displayButton);
     m_vBoxLyout->addWidget(m_saveImageButton);
     m_vBoxLyout->addWidget(m_videoWidget);
+    /* GUI End */
 
     // Connect the clicked signal of the button to the slotButtonClicked slot
     connect(m_displayButton, SIGNAL(clicked()), this, SLOT(slotButtonClicked()));
