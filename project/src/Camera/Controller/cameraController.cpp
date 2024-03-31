@@ -1,11 +1,11 @@
 #include "Camera/Controller/cameraController.h"
 
-cameraController::cameraController()
+CameraController::CameraController()
 {
 
 }
 
-cameraController::~cameraController()
+CameraController::~CameraController()
 {
 
 }

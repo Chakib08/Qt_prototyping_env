@@ -26,7 +26,7 @@ const QObject *CameraCore::getVideoOutput()
 
 void CameraCore::onCaptureButtonClicked()
 {
-    start();
+    CameraCore::start();
 }
 
 void CameraCore::onSaveImageButtonClicked(const QString &path)
@@ -35,7 +35,7 @@ void CameraCore::onSaveImageButtonClicked(const QString &path)
     m_imageCapture->captureToFile(path);
 }
 
-CameraCore::cameraCore(QPushButton* display, QPushButton* save)
+CameraCore::CameraCore(QPushButton* display, QPushButton* save)
 {
     m_camera = QSharedPointer<QCamera>(new QCamera(QMediaDevices::defaultVideoInput()));
     m_mediaCaptureSession = QSharedPointer<QMediaCaptureSession>(new QMediaCaptureSession(this));
@@ -49,7 +49,7 @@ CameraCore::cameraCore(QPushButton* display, QPushButton* save)
     connect(save, SIGNAL(clicked()), this, SLOT(onSaveImageButtonClicked()));
 }
 
-CameraCore::~cameraCore()
+CameraCore::~CameraCore()
 {
     CameraCore::stop();
     delete m_videoOutput;
