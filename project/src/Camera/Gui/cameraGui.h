@@ -12,6 +12,7 @@
 
 class CameraGui : public IDeviceGui
 {
+    Q_OBJECT
 public:
     CameraGui();
     ~CameraGui();
@@ -24,6 +25,10 @@ private:
     QVideoWidget *m_videoWidget;
     QPushButton *m_displayButton;
     QPushButton *m_saveImageButton;
+
+signals:
+    void captureButtonClicked();
+    void saveImageButtonClicked(QString &path);
 
 public slots:
     void onVideoOutputAvailable(QObject* videoOutput);

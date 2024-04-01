@@ -5,6 +5,10 @@ CameraGui::CameraGui()
     m_videoWidget = new QVideoWidget(this);
     m_displayButton = new QPushButton("Display");
     m_saveImageButton = new QPushButton("Save Image");
+
+    connect(m_displayButton, &QPushButton::clicked, this, &CameraGui::captureButtonClicked);
+    //connect(m_saveImageButton, &QPushButton::clicked, this, &CameraGui::saveImageButtonClicked);
+
 }
 
 CameraGui::~CameraGui()
@@ -38,6 +42,7 @@ QVideoWidget *CameraGui::getVideoWidget()
 
 void CameraGui::onVideoOutputAvailable(QObject *videoOutput)
 {
+    qInfo() << __func__<< "fill widget";
     m_videoWidget = qobject_cast<QVideoWidget*>(videoOutput);
 }
 

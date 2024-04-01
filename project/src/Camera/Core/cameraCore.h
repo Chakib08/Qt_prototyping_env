@@ -13,7 +13,7 @@
 
 class CameraCore : public IDeviceCore
 {
-
+    Q_OBJECT
 public:
     CameraCore();
     ~CameraCore();
@@ -21,6 +21,7 @@ public:
     void start() override;
     void stop() override;
     void setVideoOutputToGui(QObject *videoOutput);
+    QMediaCaptureSession* getMediaCaptureSession();
 
 private:
     QCamera *m_camera;

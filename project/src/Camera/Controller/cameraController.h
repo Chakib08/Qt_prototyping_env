@@ -8,6 +8,7 @@
 
 class CameraController : public IDeviceController
 {
+    Q_OBJECT
 public:
     CameraController();
     ~CameraController();

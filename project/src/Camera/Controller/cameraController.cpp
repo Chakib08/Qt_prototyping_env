@@ -29,6 +29,8 @@ bool CameraController::initGui()
 bool CameraController::run()
 {
     QWidget *w = m_cameraGui->getMainWidget();
+    QMediaCaptureSession* cap = m_cameraCore->getMediaCaptureSession();
+    cap->setVideoOutput(m_cameraGui->getVideoWidget());
     w->show();
     return true;
 }
