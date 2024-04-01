@@ -16,22 +16,24 @@ class CameraCore : public IDeviceCore
 
 public:
     CameraCore();
-    CameraCore(QPushButton* display, QPushButton* save);
     ~CameraCore();
     void initialize() override;
     void start() override;
     void stop() override;
-    const QObject* getVideoOutput();
+    void setVideoOutputToGui(QObject *videoOutput);
 
 private:
-    QSharedPointer<QCamera> m_camera;
-    QSharedPointer<QMediaCaptureSession> m_mediaCaptureSession;
-    QSharedPointer<QImageCapture> m_imageCapture;
-    QObject* m_videoOutput;
+    QCamera *m_camera;
+    QMediaCaptureSession *m_mediaCaptureSession;
+    QImageCapture *m_imageCapture;
+    QObject *m_videoOutput;
 
 public slots:
     void onCaptureButtonClicked();
     void onSaveImageButtonClicked(const QString &path);
+
+signals:
+    void videoOutputAvailable(QObject *videoOutput);
 };
 
 #endif // CameraCore_H

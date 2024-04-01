@@ -12,24 +12,35 @@ CameraGui::~CameraGui()
     delete m_saveImageButton;
     delete m_displayButton;
     delete m_videoWidget;
+    delete m_mainWidget;
 }
 
 bool CameraGui::initGui()
 {
-    /* GUI */
-    QWidget *mainWidget = new QWidget();
-    QVBoxLayout *vBoxLayout = new QVBoxLayout(mainWidget);
-    mainWidget->resize(1080, 720);
+    m_mainWidget = new QWidget();
+    QVBoxLayout *vBoxLayout = new QVBoxLayout(m_mainWidget);
+    m_mainWidget->resize(1080, 720);
     vBoxLayout->addWidget(m_displayButton);
     vBoxLayout->addWidget(m_saveImageButton);
-    if (m_videoWidget) { // Check if m_videoWidget is not null
-        vBoxLayout->addWidget(m_videoWidget);
-    } else {
-        qDebug() << "m_videoWidget is null!";
-    }
-
-    mainWidget->show();
-    /* GUI End */
-
+    vBoxLayout->addWidget(m_videoWidget);
     return true;
 }
+
+QWidget *CameraGui::getMainWidget()
+{
+    return m_mainWidget;
+}
+
+QVideoWidget *CameraGui::getVideoWidget()
+{
+    return m_videoWidget;
+}
+
+void CameraGui::onVideoOutputAvailable(QObject *videoOutput)
+{
+    m_videoWidget = qobject_cast<QVideoWidget*>(videoOutput);
+}
+
+
+
+

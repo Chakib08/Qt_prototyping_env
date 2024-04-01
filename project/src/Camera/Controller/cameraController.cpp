@@ -2,8 +2,17 @@
 
 CameraController::CameraController()
 {
-    this->m_cameraCore = new CameraCore();
     this->m_cameraGui = new CameraGui();
+    this->m_cameraCore = new CameraCore();
+
+
+    connect(m_cameraCore, &CameraCore::videoOutputAvailable, m_cameraGui, &CameraGui::onVideoOutputAvailable);
+
+    // Connect the clicked signal of the button to the slotButtonClicked slot
+    connect(m_cameraGui, &CameraGui::captureButtonClicked, m_cameraCore, &CameraCore::onCaptureButtonClicked);
+
+    // Save image
+    connect(m_cameraGui, &CameraGui::saveImageButtonClicked, m_cameraCore, &CameraCore::onSaveImageButtonClicked);
 }
 
 CameraController::~CameraController()
@@ -19,5 +28,7 @@ bool CameraController::initGui()
 
 bool CameraController::run()
 {
+    QWidget *w = m_cameraGui->getMainWidget();
+    w->show();
     return true;
 }

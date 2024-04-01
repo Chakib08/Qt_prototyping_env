@@ -16,7 +16,6 @@ public:
 private:
     CameraCore *m_cameraCore;
     CameraGui *m_cameraGui;
-
 };
 
 #endif // CAMERACONTROLLER_H

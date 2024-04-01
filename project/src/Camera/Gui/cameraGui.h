@@ -16,11 +16,17 @@ public:
     CameraGui();
     ~CameraGui();
     bool initGui();
+    QWidget* getMainWidget();
+    QVideoWidget* getVideoWidget();
 
 private:
+    QWidget *m_mainWidget;
     QVideoWidget *m_videoWidget;
     QPushButton *m_displayButton;
     QPushButton *m_saveImageButton;
+
+public slots:
+    void onVideoOutputAvailable(QObject* videoOutput);
 };
 
 #endif // CAMERAGUI_H
