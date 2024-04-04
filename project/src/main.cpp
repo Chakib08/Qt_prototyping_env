@@ -3,6 +3,7 @@
 #include <QPushButton>
 #include <QVideoWidget>
 #include <QVBoxLayout>
+#include <QStyleFactory>
 #include <QThread>
 
 #include "Camera/Controller/cameraController.h"
@@ -10,6 +11,7 @@
 int main(int argc, char *argv[])
 {
     QApplication app(argc, argv);
+    app.setStyle(QStyleFactory::create("Fusion"));
 
     // Allow the event loop to process events
     //qApp->processEvents();
