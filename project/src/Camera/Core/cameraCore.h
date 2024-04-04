@@ -8,6 +8,7 @@
 #include <QSharedPointer>
 #include <QVideoWidget>
 #include <QPushButton>
+#include <QCoreApplication>
 
 #include "Common/Interfaces/Devices/Core/iDeviceCore.h"
 

@@ -5,6 +5,7 @@ CameraCore::CameraCore()
     m_camera = new QCamera(QMediaDevices::defaultVideoInput());
     m_mediaCaptureSession = new QMediaCaptureSession(this);
     m_imageCapture = new QImageCapture();
+    m_imageSavingPath = QCoreApplication::applicationDirPath();
 }
 
 CameraCore::~CameraCore()
