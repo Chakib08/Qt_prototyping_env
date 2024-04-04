@@ -5,6 +5,11 @@
 #include <QVideoWidget>
 #include <QVBoxLayout>
 #include <QPushButton>
+#include <QIcon>
+#include <QLineEdit>
+#include <QCoreApplication>
+#include <QFileDialog>
+
 #include <QSharedPointer>
 
 #include "Common/Interfaces/Devices/Gui/iDeviceGui.h"
@@ -25,13 +30,17 @@ private:
     QVideoWidget *m_videoWidget;
     QPushButton *m_displayButton;
     QPushButton *m_saveImageButton;
+    QPushButton *m_selectImagePathButton;
+    QLineEdit *m_imageLineEditPath;
 
 signals:
     void captureButtonClicked();
-    void saveImageButtonClicked(QString &path);
+    void saveImageButtonClicked();
+    void updateImageSavingPath(const QString &path);
 
 public slots:
-    void onVideoOutputAvailable(QObject* videoOutput);
+    void onUpdateImageLineEditPath();
+
 };
 
 #endif // CAMERAGUI_H

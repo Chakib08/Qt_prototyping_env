@@ -5,11 +5,11 @@ CameraController::CameraController()
     this->m_cameraGui = new CameraGui();
     this->m_cameraCore = new CameraCore();
 
-
-    connect(m_cameraCore, &CameraCore::videoOutputAvailable, m_cameraGui, &CameraGui::onVideoOutputAvailable);
-
     // Connect the clicked signal of the button to the slotButtonClicked slot
     connect(m_cameraGui, &CameraGui::captureButtonClicked, m_cameraCore, &CameraCore::onCaptureButtonClicked);
+
+    // Update edit line path to save the image
+    connect(m_cameraGui, &CameraGui::updateImageSavingPath, m_cameraCore, &CameraCore::onUpdatedImageSavingPath);
 
     // Save image
     connect(m_cameraGui, &CameraGui::saveImageButtonClicked, m_cameraCore, &CameraCore::onSaveImageButtonClicked);

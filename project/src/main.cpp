@@ -7,14 +7,12 @@
 
 #include "Camera/Controller/cameraController.h"
 
-
-
 int main(int argc, char *argv[])
 {
     QApplication app(argc, argv);
 
     // Allow the event loop to process events
-    qApp->processEvents();
+    //qApp->processEvents();
 
     CameraController *camController = new CameraController();
     camController->initGui();

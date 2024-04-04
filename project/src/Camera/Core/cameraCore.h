@@ -27,14 +27,12 @@ private:
     QCamera *m_camera;
     QMediaCaptureSession *m_mediaCaptureSession;
     QImageCapture *m_imageCapture;
-    QObject *m_videoOutput;
+    QString m_imageSavingPath;
 
 public slots:
     void onCaptureButtonClicked();
-    void onSaveImageButtonClicked(const QString &path);
-
-signals:
-    void videoOutputAvailable(QObject *videoOutput);
+    void onSaveImageButtonClicked();
+    void onUpdatedImageSavingPath(const QString &path);
 };
 
 #endif // CameraCore_H

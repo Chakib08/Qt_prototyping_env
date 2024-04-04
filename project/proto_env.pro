@@ -26,6 +26,8 @@ HEADERS += \
     src/Camera/Core/cameraCore.h \
     src/Camera/Gui/cameraGui.h
 
+RESOURCES += \
+    resources/icons.qrc
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
