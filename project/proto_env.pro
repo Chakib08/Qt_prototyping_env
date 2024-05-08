@@ -11,18 +11,25 @@ CONFIG += c++17
 INCLUDEPATH += $$PWD/src
 
 SOURCES += \
+    src/console/logger.cpp \
+    src/console/logshandler.cpp \
     src/main.cpp \
     src/Camera/Controller/cameraController.cpp \
     src/Camera/Core/cameraCore.cpp \
-    src/Camera/Gui/cameraGui.cpp
+    src/Camera/Gui/cameraGui.cpp \
+    src/mainwindow.cpp
 
 HEADERS += \
+    src/Common/Interfaces/Logger/ilogappender.h \
     src/Common/Interfaces/Devices/Controller/iDeviceController.h \
     src/Common/Interfaces/Devices/Core/iDeviceCore.h \
     src/Common/Interfaces/Devices/Gui/iDeviceGui.h \
     src/Camera/Controller/cameraController.h \
     src/Camera/Core/cameraCore.h \
-    src/Camera/Gui/cameraGui.h
+    src/Camera/Gui/cameraGui.h \
+    src/console/logger.h \
+    src/console/logshandler.h \
+    src/mainwindow.h
 
 RESOURCES += \
     resources/icons.qrc
@@ -34,14 +41,17 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 
 
 
-LIBS += C:\OpenCV-MinGW-Build\x64\mingw\bin\libopencv_highgui455.dll
-LIBS += C:\OpenCV-MinGW-Build\x64\mingw\bin\libopencv_imgproc455.dll
-LIBS += C:\OpenCV-MinGW-Build\x64\mingw\bin\libopencv_core455.dll
-LIBS += C:\OpenCV-MinGW-Build\x64\mingw\bin\libopencv_imgcodecs455.dll
-LIBS += C:\OpenCV-MinGW-Build\x64\mingw\bin\libopencv_video455.dll
-LIBS += C:\OpenCV-MinGW-Build\x64\mingw\bin\libopencv_videoio455.dll
+#LIBS += C:\OpenCV-MinGW-Build\x64\mingw\bin\libopencv_highgui455.dll
+#LIBS += C:\OpenCV-MinGW-Build\x64\mingw\bin\libopencv_imgproc455.dll
+#LIBS += C:\OpenCV-MinGW-Build\x64\mingw\bin\libopencv_core455.dll
+#LIBS += C:\OpenCV-MinGW-Build\x64\mingw\bin\libopencv_imgcodecs455.dll
+#LIBS += C:\OpenCV-MinGW-Build\x64\mingw\bin\libopencv_video455.dll
+#LIBS += C:\OpenCV-MinGW-Build\x64\mingw\bin\libopencv_videoio455.dll
 
 
 
 INCLUDEPATH += C:/OpenCV-MinGW-Build/include
 DEPENDPATH += C:/OpenCV-MinGW-Build/include
+
+FORMS += \
+    src/mainwindow.ui
